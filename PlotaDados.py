@@ -1,19 +1,21 @@
-# Data Logger
+# Data Logger temperature
 # Por: Wilton Lacerda Silva
 # 06/2021
-# Este vídeo: https://youtu.be/Erkl7Rmc85A
+# Este vídeo: https://youtu.be/B9kwmgtZf4Q
 
 import numpy as np
 import matplotlib.pyplot as plt
 
+data = np.loadtxt('Data_temp_0.txt')
 
-data = np.loadtxt('Data01.txt')
+tempo = data[:,0]
+temp_DS = data[:,1]
+temp_PI = data[:,2]
 
-x = data[:,0]
-y = data[:,1]
-plt.plot(x,y,'ro')
-plt.title("Gráfico do potenciometro")
+plt.figure()
+plt.plot(tempo,temp_DS,label="DS18B20")
+plt.title("Temperatura")
 plt.xlabel("tempo (s)")
-plt.ylabel("Tensão (V)")
-plt.grid()
+plt.ylabel("Temperatura (°C)")
+plt.legend(loc = 'upper left')
 plt.show()
